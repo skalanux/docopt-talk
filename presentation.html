@@ -53,27 +53,30 @@
 </section>
 
 <section>
+
 <h3>Docopt</h3>
    <ul>
       <li class="next">Definir la interfaz de tu aplicación como linea de comando, help.
         <ul>
-          <li class="next">Convención ampliamente usada
-          <li class="next"> Una variación de DRY.
+          <li class="next">Basado en convenciones ampliamente usadas durante
+              décadas
           <li class="next"> Autodocumentación, genera el HELP.
         </ul>
     </ul>
-
 </section>
 
-
 <section>
-    <h3>Codigo</h3>
+    <h3>Veamos un ejemplo de HELP</h3>
     <pre>
-    <code class="language-python">
-        def aplicacion(test):
-            lala = lele
-    </code>
-    </pre>
+    <code class="language-bash">
+        Usage:
+          my_program command --option <argument>
+          my_program [<optional-argument>]
+          my_program --another-option=<with-argument>
+          my_program (--either-that-option | <or-this-argument>)
+          my_program <repeating-argument> <repeating-argument>...
+   </code>
+   </pre>
 </section>
 
 
@@ -86,7 +89,7 @@
 <style>
   html, .view body { background-color: black; counter-reset: slideidx; }
   body, .view section {
-    background-color: white; border-radius: 12px;
+    background-color: white;
     font-family: 'Oswald', arial, serif;
   }</span>
 
@@ -124,12 +127,9 @@
 
   pre {
     overflow: hidden;
-    font-size: 1.25rem;
-    margin: 0 75px 0 75px;
-    padding: 10px;
+    padding: 0px;
     border: 1px solid;
-    font-weight: bold;
-    background-color: #F7F7F7;
+    background-color: #ddd;
     width:80%
   }
 
@@ -191,6 +191,7 @@
   }
 
   header {
+    padding: 0 10px;
     background-color: #F3F4F8;
     border-bottom: 1px solid #CCC;
   }
@@ -198,6 +199,7 @@
   footer {
     background-color: #F3F4F8;
     border-top: 1px solid #CCC;
+    padding: 0 10px;
     padding-bottom: 4px; /* remember progress bar */
   }
 
@@ -331,7 +333,6 @@
   #progress-bar{ display:none; }
 }
 
-/*
    **************************************
    Uncomment the following for 16:9 slides
    **************************************
@@ -343,7 +344,6 @@
     margin: -140px -200px;
     transform: scale(.3);
   }
-*/
 </style>
  <link href="prism.css" rel="stylesheet" />
 <script src="prism.js"></script>
