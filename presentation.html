@@ -9,7 +9,7 @@
   Docopt
 </header>
 
-<footer>Juan Manuel Schillaci</footer>
+<footer>Juan Manuel Schillaci - referencia:http://docopt.org/</footer>
 
 <!-- Your Slides -->
 <!-- One section is one slide -->
@@ -70,15 +70,411 @@
     <pre>
     <code class="language-bash">
         Usage:
-          my_program command --option <argument>
-          my_program [<optional-argument>]
-          my_program --another-option=<with-argument>
-          my_program (--either-that-option | <or-this-argument>)
-          my_program <repeating-argument> <repeating-argument>...
+          mi_programa comando --opcion &ltargumento&gt
+          mi_programa [&ltargumento-opcional&gt]
+          mi_programa --otra-opcion=&ltcon-argumento&gt
+          mi_programa (--o-esta-opcion | &lto-esta-otra&gt)
+          mi_programa &ltargumentos-repetitivos&gt &ltargumento-repetititvo&gt...
    </code>
    </pre>
 </section>
 
+<section>
+    <h3>&ltargument&gt ARGUMENT</h3>
+
+    <p>Words starting with "<", ending with ">" and upper-case words are
+    interpreted as positional arguments.</p>
+</section>
+
+<section>
+    <h3>&ltargument&gt ARGUMENT</h3>
+
+    <pre>
+    <code class="language-bash">
+    Usage: mi_programa &lthost&gt &ltport&gt
+   </code>
+   </pre>
+</section>
+
+<section>
+    <h3>-o --opcion</h3>
+    <p>Words starting with "<", ending with ">" and upper-case words are
+Words starting with one or two dashes (with exception of "-", "--" by
+themselves) are interpreted as short (one-letter) or long options,
+respectively.
+
+</section>
+
+
+<section>
+    <h3>-o --opcion</h3>
+
+    <p>Short options can be "stacked" meaning that -abc is equivalent to -a -b -c.</p>
+</section>
+
+<section>
+    <h3>-o --opcion</h3>
+
+      <p>  Long options can have arguments specified after space or equal "="
+        sign:
+            --input=ARG is equivalent to --input ARG.
+                Short options can have arguments specified after optional
+                space:
+                    -f FILE is equivalent to -fFILE.</p>
+
+</section>
+
+<section>
+    <h3>command</h3>
+
+        <p>Todas las palabras que no sigan la convencion de argumentos u opción se
+        interpretan como comandos o subcomandos</p>
+
+</section>
+
+<section>
+    <h3>(Elementos requeridos)</h3>
+
+        <p>Todos los elementos son requeridos por default al menos que sean
+        incluidos entre "[ ]" , por ejemplo cuando se necesita un grupo de
+        elmentos mutualmente exclusivos.</p>
+        <pre>
+        <code class="language-bash">
+        Usage: my_program (--either-this &ltand-that&gt | &ltor-this&gt)
+        </code>
+        <pre>
+</section>
+
+<section>
+    <h3>(Elementos requeridos)</h3>
+
+        <p>Otro caso de uso es cuando se necesita especificar que si un elemento
+        está presente entonces el siguiente también debe ser requerido</p>
+
+        <pre>
+        <code class="language-bash">
+        Usage: my_program [( &ltun-argumento&gt &ltotro-argumento&gt)]
+        </code>
+        <pre>
+</section>
+
+<section>
+    <h3>elemento | otro</h3>
+
+        <p>Los elementos mutualmente exclusivos pueden ser separados con un pipe "|"</p>
+
+        <pre>
+        <code class="language-bash">
+        Usage: my_program go (--up | --down | --left | --right)
+        </code>
+        <pre>
+</section>
+
+
+<section>
+    <h3>elemento | otro</h3>
+
+<p>Usar paréntesis "( )" para agrupar elementos cuando uno de los casos mutualmente exclusivos es requeridos. Usar corchetes "[ ]" para agrupar elmento cuando ninguno de los elementos mutualmente exclusivos es requerido.</p>
+
+        <pre>
+        <code class="language-bash">
+		Usage: my_program go [--up | --down | --left | --right]
+        </code>
+        <pre>
+</section>
+
+
+<section>
+    <h3>elemento...</h3>
+
+<p>Usar tres puntos suspensivos "..." para especificar que un argumento o grupo de elementos de la izquierda puede ser repetido una o mas veces.</p>
+
+        <pre>
+        <code class="language-bash">
+		Usage: my_program abrir &ltfile&gt...
+       	       my_program mover (&ltfrom&gt &ltto&gt)...
+        </code>
+        <pre>
+</section>
+
+<section>
+    <h3>[options]</h3>
+
+<p>[options] es un atajo que permite poder evitar listar todas las opciones (de una lista de opciones con desripciones) en un patrón</p>
+</section>
+
+
+
+<section>
+<h3>[options]</h3>
+<p>Esto</p>
+        <pre>
+        <code class="language-bash">
+		Usage: my_program [options] <path>
+
+		--all             List everything.
+		--long            Long output.
+		--human-readable  Display in human-readable format..
+        </code>
+        <pre>
+</section>
+
+<section>
+<h3>[options]</h3>
+<p>Es equivalente a esto</p>
+        <pre>
+        <code class="language-bash">
+Usage: my_program [--all --long --human-readable] <path>
+
+--all             List everything.
+--long            Long output.
+--human-readable  Display in human-readable format.
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>[- -]</h3>
+<p>Dos guiones medios,"- -",cuando no son parte de una opción, suelen ser usados como una convención para separar opciones y argumentos posicionales, por ejemplo cuando nombres de archivos pueden ser confundidos con opciones.</p>
+ 
+        <pre>
+        <code class="language-bash">
+		Usage: my_program [options] [--] <file>...
+        </code>
+        <pre>
+</section>
+
+<section>
+<h3>[-]</h3>
+<p>Un solo "-", (fuera de las opciones) es usado por convención para decirle a un programa que debe leer por stdin en lugar de un archivo. Para esta convención deberás agregar "[-]". "-" por si sólo puede usarse como un comando normal con cualquier significado</p>
+ 
+        <pre>
+        <code class="language-bash">
+		Usage: my_program read ([-] | file )
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>Descripción de opciones</h3>
+<p>La descripción de opciones es una lista de opciones que se ponen debajo de los patrones de uso para alguno de los siguientes casos.</p>
+
+<ul>
+<li>Sinónimos de opciónes cortas y largas.
+<li>Que una opción tiene un argumento.
+<li>Valor por defecto de un argumento de una opción.
+</ul>
+</section>
+
+<section>
+<h3>Descripción de opciones</h3>
+<p>Cada línea que comienza con "-" o "--" sin contar espacios es tratada com una descripción de opciones.</p>
+
+        <pre>
+        <code class="language-bash">
+		Usage: my_program read ([-] | file )
+        </code>
+        <pre>
+</section>
+
+
+
+
+<section>
+<h3>Descripción de opciones</h3>
+<p>To specify that an option has an argument, put a word describing that argument after a space (or equals "=" sign) as shown below. Follow either <angular-brackets> or UPPER-CASE convention for options' arguments. You can use a comma if you want to separate options. In the example below, both lines are valid, however it is recommended to stick to a single style.</p>
+
+
+        <pre>
+        <code class="language-bash">
+		-o FILE --output=FILE       # without comma, with "=" sign
+		-i &ltfile&gt, --input &ltfile&gt   # with comma, without "=" sign
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>Descripción de opciones</h3>
+        <pre>
+        <code class="language-bash">
+		-o FILE --output=FILE       # without comma, with "=" sign
+		-i &ltfile&gt, --input &ltfile&gt   # with comma, without "=" sign
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>Descripción de opciones</h3>
+<p>Usa dos espacios para separar opciones con su descripcion informal</p>
+        <pre>
+        <code class="language-bash">
+--verbose MORE text.    # BAD, will be treated as if verbose
+                        # option had an argument MORE, so use
+                        # 2 spaces instead
+-q        Quit.         # GOOD
+-o FILE   Output file.  # GOOD
+--stdout  Use stdout.   # GOOD, 2 spaces
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>Descripción de opciones</h3>
+<p>Para setear un valor por defecto para una opcion con un argumento. poner el argumento en la descipción de la opción en la forma [default: &ltthe-default-value&gt].</p>
+
+        <pre>
+        <code class="language-bash">
+--coefficient=K  The K coefficient [default: 2.95]
+--output=FILE    Output file [default: test.txt]
+--directory=DIR  Some directory [default: ./]
+        </code>
+        <pre>
+</section>
+
+<section>
+<h3>Docopt</h3>
+   <ul>
+      <li class="next">Definir la interfaz de tu aplicación como linea de comando, help.
+
+<li class="next">Generar un parser automático para la interfaz definida
+<ul>
+<li class="next">Interpretar variables.
+<li class="next">Interpretar opciones, argumentos
+<li class="next">(Sub)comandos
+
+        </ul>
+    </ul>
+</section>
+
+<section>
+<h3>Docopt</h3>
+<p>Docopt tiene implementaciones para mas de una veintena de lenguajes, siendo el principal python</p>
+</section>
+
+<section>
+<h3>Docopt</h3>
+<p>La instalación es muy sencilla y sin dependencias</p>
+
+        <pre>
+        <code class="language-bash">
+		pip install docopt
+        </code>
+        <pre>
+</section>
+
+<section>
+<h3>API</h3>
+<p>Muy sencillo de usar</p>
+
+        <pre>
+        <code class="language-python">
+		docopt(doc, argv=None, help=True, 
+			version=None, options_first=False)
+        </code>
+        <pre>
+</section>
+
+
+<section>
+<h3>API</h3>
+<ul>
+<li class="next"> <mark>argv</mark> es un vector argumento opcional. por defecto toma sys.argv[1:]. Alternativamente se puede pasar una lista de strings como ['--verbose', '-o', 'hai.txt'].
+
+<li class="next"> <mark>help</mark> default True. Especifica si el parser debe automaticamente y terminar en caso de <mark>-h</mark> o <mark>--help</mark> .
+
+<li class="next"> <mark>version</mark> por defecto None, es un argumento opcional que especifica que si cuando se pasa en la linea de comando debe imprimir la versión y cerrarse.
+
+<li class="next"> <mark>options_first</mark> por defecto False, si se especifica True no dejará mezclar opciones y argumentos posicionales. Luego del primer argumento posicional los demas serán interpretados como posicionales aunque luzcan como opciones.
+
+<li class="next"> <mark>return</mark> value es un diccionario con las opciones, argumentos y comandos como claves, exactamente como fueron descriptas en el help.
+
+ </ul>
+</section>
+
+
+<section>
+<pre class="small-frame">
+<code class="language-python small">
+"""Naval Fate.
+
+Usage:
+  naval_fate.py ship new &ltname&gt...
+  naval_fate.py ship &ltname&gt move &ltx&gt &lty&gt [--speed=&ltkn&gt]
+  naval_fate.py ship shoot &ltx&gt &lty&gt
+  naval_fate.py mine (set|remove) &ltx&lt &gty&gt [--moored | --drifting]
+  naval_fate.py (-h | --help)
+  naval_fate.py --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+  --speed=&ltkn&gt  Speed in knots [default: 10].
+  --moored      Moored (anchored) mine.
+  --drifting    Drifting mine.
+
+"""
+from docopt import docopt
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='Naval Fate 2.0')
+    print(arguments)
+
+</code>
+</pre>
+
+</section>
+
+
+<section>
+<h3>Example</h3>
+<pre>
+
+
+<code class="language-bash">
+
+naval_fate.py ship Guardian move 100 150 --speed=15
+</code>
+</pre>
+
+
+</section>
+
+
+<section>
+<h3>Example</h3>
+<pre>
+
+<code class="language-bash">
+
+naval_fate.py ship Guardian move 100 150 --speed=15
+</code>
+</pre>
+
+</section>
+
+<section>
+<h3>Return dictionary</h3>
+<pre>
+
+<code class="language-python">
+{'--drifting': False,    'mine': False,
+ '--help': False,        'move': True,
+ '--moored': False,      'new': False,
+ '--speed': '15',        'remove': False,
+ '--version': False,     'set': False,
+ '&ltname&gt': ['Guardian'], 'ship': True,
+ '&ltx&gt': '100',           'shoot': False,
+ '&lty&gt': '150'}
+</code>
+</pre>
+
+
+</section>
 
 <!-- Your Style -->
 <!-- Define the style of your presentation -->
@@ -91,10 +487,10 @@
   body, .view section {
     background-color: white;
     font-family: 'Oswald', arial, serif;
-  }</span>
+  }
 
   section, .view head > title {
-      font-size: 2rem;
+      font-size: 1em;
   }
 
   .view section:after {
@@ -149,7 +545,7 @@
 
   p {
     margin: 75px 75px 0 75px;
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 
   table {
@@ -321,6 +717,13 @@
   }
   .view header { display: none; }
   .view footer { display: none; }
+  .small {
+    font-size: 9px;
+}
+  .small-frame {
+    top: 1px;
+    padding: 1px;
+}
 
 @media print {
   section {
