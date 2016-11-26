@@ -82,8 +82,7 @@
 <section>
     <h3>&ltargument&gt ARGUMENT</h3>
 
-    <p>Words starting with "<", ending with ">" and upper-case words are
-    interpreted as positional arguments.</p>
+    <p>Las palabras empezando con "<", terminando con ">" y palabras en mayúsculas son interpretadas como argumentos posicionales</p>
 </section>
 
 <section>
@@ -98,49 +97,58 @@
 
 <section>
     <h3>-o --opcion</h3>
-    <p>Words starting with "<", ending with ">" and upper-case words are
-Words starting with one or two dashes (with exception of "-", "--" by
-themselves) are interpreted as short (one-letter) or long options,
-respectively.
+    <p>Son intepretadas como opciones las palabras empezando por "-" o "- -" (con la excepción de "-" y "--" por si mismos son intepretados como opciones)</p>
 
-</section>
+		</section>
 
 
-<section>
-    <h3>-o --opcion</h3>
+		<section>
+		    <h3>-o --opcion</h3>
 
-    <p>Short options can be "stacked" meaning that -abc is equivalent to -a -b -c.</p>
-</section>
+		    <p>Las opciones cortas pueden encadenarse 
+			<pre>
+			<code class="language-bash">
+        		Usage: mi_programa -abc
+        		</code>
+        		</pre>
+			<pre>
+			<code class="language-bash">
+        		Usage: mi_programa -a -b -c
+        		</code>
+        		</pre>
+			</p>
+		</section>
 
-<section>
-    <h3>-o --opcion</h3>
+		<section>
+		    <h3>-o --opcion</h3>
 
-      <p>  Long options can have arguments specified after space or equal "="
-        sign:
-            --input=ARG is equivalent to --input ARG.
-                Short options can have arguments specified after optional
-                space:
-                    -f FILE is equivalent to -fFILE.</p>
+		      <p> Las opciones largas pueden tener argumentos, especificados después de un espacio o un igual "=":<p>
+		<p>   --input=ARG es equivalente a --input ARG. </p>
+		</section>
 
-</section>
+		<section>
+		<p> Las opciones cortas pueden tener argumentos especificados luego de un espacio opcional: </p>
+		<p>	    -f FILE es equivalente a -fFILE.</p>
 
-<section>
-    <h3>command</h3>
+		</section>
 
-        <p>Todas las palabras que no sigan la convencion de argumentos u opción se
-        interpretan como comandos o subcomandos</p>
+		<section>
+		    <h3>command</h3>
 
-</section>
+			<p>Todas las palabras que no sigan la convencion de argumentos u opción se
+			interpretan como comandos o subcomandos</p>
 
-<section>
-    <h3>(Elementos requeridos)</h3>
+		</section>
 
-        <p>Todos los elementos son requeridos por default al menos que sean
-        incluidos entre "[ ]" , por ejemplo cuando se necesita un grupo de
-        elmentos mutualmente exclusivos.</p>
-        <pre>
-        <code class="language-bash">
-        Usage: my_program (--either-this &ltand-that&gt | &ltor-this&gt)
+		<section>
+		    <h3>(Elementos requeridos)</h3>
+
+			<p>Todos los elementos son requeridos por default al menos que sean
+			incluidos entre "[ ]" , pero por ejemplo cuando se necesita un grupo de
+			elmentos mutualmente exclusivos se usan ( ).</p>
+			<pre>
+			<code class="language-bash">
+        Usage: mi_programa (--either-this &ltand-that&gt | &ltor-this&gt)
         </code>
         <pre>
 </section>
@@ -153,7 +161,7 @@ respectively.
 
         <pre>
         <code class="language-bash">
-        Usage: my_program [( &ltun-argumento&gt &ltotro-argumento&gt)]
+        Usage: mi_programa [(&ltun-argumento&gt &ltotro-argumento&gt)]
         </code>
         <pre>
 </section>
@@ -165,24 +173,10 @@ respectively.
 
         <pre>
         <code class="language-bash">
-        Usage: my_program go (--up | --down | --left | --right)
+        Usage: mi_programa go (--up | --down | --left | --right)
         </code>
         <pre>
 </section>
-
-
-<section>
-    <h3>elemento | otro</h3>
-
-<p>Usar paréntesis "( )" para agrupar elementos cuando uno de los casos mutualmente exclusivos es requeridos. Usar corchetes "[ ]" para agrupar elmento cuando ninguno de los elementos mutualmente exclusivos es requerido.</p>
-
-        <pre>
-        <code class="language-bash">
-		Usage: my_program go [--up | --down | --left | --right]
-        </code>
-        <pre>
-</section>
-
 
 <section>
     <h3>elemento...</h3>
@@ -191,8 +185,8 @@ respectively.
 
         <pre>
         <code class="language-bash">
-		Usage: my_program abrir &ltfile&gt...
-       	       my_program mover (&ltfrom&gt &ltto&gt)...
+		Usage: mi_programa open &ltfile&gt...
+       	       mi_programa mover (&ltfrom&gt &ltto&gt)...
         </code>
         <pre>
 </section>
@@ -200,7 +194,7 @@ respectively.
 <section>
     <h3>[options]</h3>
 
-<p>[options] es un atajo que permite poder evitar listar todas las opciones (de una lista de opciones con desripciones) en un patrón</p>
+<p>[options] Es un atajo que permite poder evitar listar todas las opciones (de una lista de opciones con descripciones) en un patrón</p>
 </section>
 
 
@@ -210,11 +204,11 @@ respectively.
 <p>Esto</p>
         <pre>
         <code class="language-bash">
-		Usage: my_program [options] <path>
+		Usage: mi_programa [options] <path>
 
-		--all             List everything.
-		--long            Long output.
-		--human-readable  Display in human-readable format..
+		--all             Listar todo.
+		--long            Salida larga.
+		--human-readable  Mostrar en formato human-readble..
         </code>
         <pre>
 </section>
@@ -224,117 +218,16 @@ respectively.
 <p>Es equivalente a esto</p>
         <pre>
         <code class="language-bash">
-Usage: my_program [--all --long --human-readable] <path>
+Usage: mi_programa [--all --long --human-readable] <path>
 
---all             List everything.
---long            Long output.
---human-readable  Display in human-readable format.
+		--all             Listar todo.
+		--long            Salida larga.
+		--human-readable  Mostrar en formato human-readble..
         </code>
         <pre>
 </section>
 
 
-<section>
-<h3>[- -]</h3>
-<p>Dos guiones medios,"- -",cuando no son parte de una opción, suelen ser usados como una convención para separar opciones y argumentos posicionales, por ejemplo cuando nombres de archivos pueden ser confundidos con opciones.</p>
- 
-        <pre>
-        <code class="language-bash">
-		Usage: my_program [options] [--] <file>...
-        </code>
-        <pre>
-</section>
-
-<section>
-<h3>[-]</h3>
-<p>Un solo "-", (fuera de las opciones) es usado por convención para decirle a un programa que debe leer por stdin en lugar de un archivo. Para esta convención deberás agregar "[-]". "-" por si sólo puede usarse como un comando normal con cualquier significado</p>
- 
-        <pre>
-        <code class="language-bash">
-		Usage: my_program read ([-] | file )
-        </code>
-        <pre>
-</section>
-
-
-<section>
-<h3>Descripción de opciones</h3>
-<p>La descripción de opciones es una lista de opciones que se ponen debajo de los patrones de uso para alguno de los siguientes casos.</p>
-
-<ul>
-<li>Sinónimos de opciónes cortas y largas.
-<li>Que una opción tiene un argumento.
-<li>Valor por defecto de un argumento de una opción.
-</ul>
-</section>
-
-<section>
-<h3>Descripción de opciones</h3>
-<p>Cada línea que comienza con "-" o "--" sin contar espacios es tratada com una descripción de opciones.</p>
-
-        <pre>
-        <code class="language-bash">
-		Usage: my_program read ([-] | file )
-        </code>
-        <pre>
-</section>
-
-
-
-
-<section>
-<h3>Descripción de opciones</h3>
-<p>To specify that an option has an argument, put a word describing that argument after a space (or equals "=" sign) as shown below. Follow either <angular-brackets> or UPPER-CASE convention for options' arguments. You can use a comma if you want to separate options. In the example below, both lines are valid, however it is recommended to stick to a single style.</p>
-
-
-        <pre>
-        <code class="language-bash">
-		-o FILE --output=FILE       # without comma, with "=" sign
-		-i &ltfile&gt, --input &ltfile&gt   # with comma, without "=" sign
-        </code>
-        <pre>
-</section>
-
-
-<section>
-<h3>Descripción de opciones</h3>
-        <pre>
-        <code class="language-bash">
-		-o FILE --output=FILE       # without comma, with "=" sign
-		-i &ltfile&gt, --input &ltfile&gt   # with comma, without "=" sign
-        </code>
-        <pre>
-</section>
-
-
-<section>
-<h3>Descripción de opciones</h3>
-<p>Usa dos espacios para separar opciones con su descripcion informal</p>
-        <pre>
-        <code class="language-bash">
---verbose MORE text.    # BAD, will be treated as if verbose
-                        # option had an argument MORE, so use
-                        # 2 spaces instead
--q        Quit.         # GOOD
--o FILE   Output file.  # GOOD
---stdout  Use stdout.   # GOOD, 2 spaces
-        </code>
-        <pre>
-</section>
-
-
-<section>
-<h3>Descripción de opciones</h3>
-<p>Para setear un valor por defecto para una opcion con un argumento. poner el argumento en la descipción de la opción en la forma [default: &ltthe-default-value&gt].</p>
-
-        <pre>
-        <code class="language-bash">
---coefficient=K  The K coefficient [default: 2.95]
---output=FILE    Output file [default: test.txt]
---directory=DIR  Some directory [default: ./]
-        </code>
-        <pre>
-</section>
 
 <section>
 <h3>Docopt</h3>
@@ -383,9 +276,9 @@ Usage: my_program [--all --long --human-readable] <path>
 <section>
 <h3>API</h3>
 <ul>
-<li class="next"> <mark>argv</mark> es un vector argumento opcional. por defecto toma sys.argv[1:]. Alternativamente se puede pasar una lista de strings como ['--verbose', '-o', 'hai.txt'].
+<li class="next"> <mark>argv</mark> es un vector argumento opcional. por defecto toma sys.argv[1:]. Alternativamente se puede pasar una lista de strings como ['--input', '-o', 'archivo.txt'].
 
-<li class="next"> <mark>help</mark> default True. Especifica si el parser debe automaticamente y terminar en caso de <mark>-h</mark> o <mark>--help</mark> .
+<li class="next"> <mark>help</mark> default True. Especifica si el parser debe mostrar el help automaticamente y terminar en caso de <mark>-h</mark> o <mark>--help</mark> .
 
 <li class="next"> <mark>version</mark> por defecto None, es un argumento opcional que especifica que si cuando se pasa en la linea de comando debe imprimir la versión y cerrarse.
 
@@ -400,15 +293,15 @@ Usage: my_program [--all --long --human-readable] <path>
 <section>
 <pre class="small-frame">
 <code class="language-python small">
-"""Naval Fate.
+"""Batalla naval.
 
 Usage:
-  naval_fate.py ship new &ltname&gt...
-  naval_fate.py ship &ltname&gt move &ltx&gt &lty&gt [--speed=&ltkn&gt]
-  naval_fate.py ship shoot &ltx&gt &lty&gt
-  naval_fate.py mine (set|remove) &ltx&lt &gty&gt [--moored | --drifting]
-  naval_fate.py (-h | --help)
-  naval_fate.py --version
+  batalla_naval.py ship new &ltname&gt...
+  batalla_naval.py ship &ltname&gt move &ltx&gt &lty&gt [--speed=&ltkn&gt]
+  batalla_naval.py ship shoot &ltx&gt &lty&gt
+  batalla_naval.py mine (set|remove) &ltx&lt &gty&gt [--moored | --drifting]
+  batalla_naval.py (-h | --help)
+  batalla_naval.py --version
 
 Options:
   -h --help     Show this screen.
@@ -421,7 +314,7 @@ Options:
 from docopt import docopt
 
 if __name__ == '__main__':
-    arguments = docopt(__doc__, version='Naval Fate 2.0')
+    arguments = docopt(__doc__, version='Batalla naval 2.0')
     print(arguments)
 
 </code>
@@ -431,13 +324,13 @@ if __name__ == '__main__':
 
 
 <section>
-<h3>Example</h3>
+<h3>Ejemplo</h3>
 <pre>
 
 
 <code class="language-bash">
 
-naval_fate.py ship Guardian move 100 150 --speed=15
+batalla_naval.py ship Guardian move 100 150 --speed=15
 </code>
 </pre>
 
@@ -446,12 +339,12 @@ naval_fate.py ship Guardian move 100 150 --speed=15
 
 
 <section>
-<h3>Example</h3>
+<h3>Ejemplo</h3>
 <pre>
 
 <code class="language-bash">
 
-naval_fate.py ship Guardian move 100 150 --speed=15
+batalla_naval.py ship Guardian move 100 150 --speed=15
 </code>
 </pre>
 
@@ -474,6 +367,50 @@ naval_fate.py ship Guardian move 100 150 --speed=15
 </pre>
 
 
+</section>
+<section>
+<h3>Repasando...</h3>
+
+<p> Docopt permite </p>
+
+  <ul>
+      <li class="next">Definir la interfaz de tu aplicación como linea de comando, help.
+	<ul>
+	 <li class="next"> Comandos
+	 <li class="next"> Argumentos
+	 <li class="next"> Opciones
+	 <li class="next"> Elementos
+        </ul>
+  </ul>
+</section>
+
+
+<section>
+<h3>Repasando...</h3>
+<ul>
+  <li class="next">Generar un parser automático para la interfaz definida
+	<ul>
+	   <li class="next"> Interpretar variables.
+	  <li class="next"> Validar elementos repetitivos
+	  <li class="next"> Manejar subcomandos
+        </ul>
+     <li class="next"> Help automático
+</ul>
+</section>
+
+<section>
+<h1>¡Menos líneas de código!</h1>
+
+</section>
+
+
+<section>
+<h1>¿Preguntas?</h1>
+
+</section>
+<section>
+<h1>Juan Manuel Schillaci</h1>
+<h2>jmschillaci@gmail.com</h2>
 </section>
 
 <!-- Your Style -->
